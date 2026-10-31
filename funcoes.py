@@ -11,6 +11,12 @@ def preenche_frota(dic_frota,nome_navio,linha,coluna,orientacao,tamanho):
         dic_frota[nome_navio] = []
     dic_frota[nome_navio].append(define_posicoes(linha,coluna,orientacao,tamanho))
     return dic_frota
+def faz_jogada(tabuleiro, linha, coluna):
+    if tabuleiro[linha][coluna] == 1:
+        tabuleiro[linha][coluna] = 'X'
+    else:
+        tabuleiro[linha][coluna] = '-'
+    return tabuleiro
 
 
 
