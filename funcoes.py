@@ -17,6 +17,14 @@ def faz_jogada(tabuleiro, linha, coluna):
     else:
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
-
+def posiciona_frota(dic_frota):
+    tabuleiro = []
+    for i in range(10):
+        tabuleiro.append([0]*10)
+    for lista_total in dic_frota.values():
+        for lista in lista_total:
+            for linha , coluna in lista:
+                tabuleiro[linha][coluna] = 1
+    return tabuleiro
 
 
