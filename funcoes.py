@@ -39,3 +39,13 @@ def afundados(frota,tabuleiro):
             if afundou:
                 total +=1 
     return total             
+def posicao_valida(dic_frota,linha,coluna,orientacao,tamanho):
+    posicoes = define_posicoes(linha,coluna,orientacao,tamanho)
+    for linha , coluna in posicoes:
+        if linha < 0 or linha > 9 or coluna < 0 or coluna > 9:
+            return False
+        for lista_total in dic_frota.values():
+            for navio in lista_total:
+                if [linha , coluna] in navio:
+                    return False
+    return True
