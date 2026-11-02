@@ -1,4 +1,5 @@
 from funcoes import define_posicoes, preenche_frota, posicao_valida, posiciona_frota, faz_jogada, afundados, monta_tabuleiros
+import random
 i = 0 
 dic_frota = {
     "porta-aviões":[],
@@ -80,8 +81,18 @@ while qtd_afundada_jogador<=9:
         if qtd_afundada_jogador == 10:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
         else:
+            linha_op = random.randint(0, 9)
+            coluna_op = random.randint(0, 9)
+            while tabuleiro_jogador[linha_op][coluna_op] == 'X' or tabuleiro_jogador[linha_op][coluna_op] == '-':
+                linha_op = random.randint(0, 9)
+                coluna_op = random.randint(0, 9)
+            print(f'Seu oponente está atacando na linha {linha_op} e coluna {coluna_op}')
+            tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linha_op, coluna_op)
+            qtd_afundada_oponente = afundados(dic_frota, tabuleiro_jogador)
+            if qtd_afundada_oponente == 10:
+                print('Xi! O oponente derrubou toda a sua frota =(')
+                break
             print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
-
     
 
 
